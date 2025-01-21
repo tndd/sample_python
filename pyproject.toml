@@ -8,3 +8,11 @@ dependencies = []
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = [
+    "src",
+]
+python_files = [
+    "*.py",
+]
