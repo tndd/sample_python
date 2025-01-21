@@ -1,4 +1,4 @@
-from sample_python.sub_b.b import f_b
+from sample.sub_b.b import f_b
 
 
 def f_a():
