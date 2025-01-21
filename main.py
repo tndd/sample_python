@@ -1,10 +1,9 @@
-from sample.sub_a.a import f_a
+from sample.insight.count import count_data
 
 
 def main():
-    s = f_a()
-    return s
+    return count_data()
+
 
 if __name__ == "__main__":
-    s = main()
-    print(s)
+    print("MAIN Data count:", main())
