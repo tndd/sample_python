@@ -13,7 +13,7 @@ def get_names(n: int = 1000):
 
 ### TEST ###
 def test_get_data_string():
-    assert get_data_string() == "data:a, data:b,data:c"
+    assert get_data_string() == "data:a, data:b, data:c"
 
 
 def test_get_names():
