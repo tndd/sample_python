@@ -13,6 +13,9 @@ where = ["src"]
 testpaths = [
     "src",
 ]
+
 python_files = [
     "*.py",
 ]
+
+addopts = "--import-mode=importlib"
