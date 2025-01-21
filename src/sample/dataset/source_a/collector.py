@@ -62,4 +62,4 @@ def test_collect_dummy_df():
 
 ### MAIN ###
 if __name__ == "__main__":
-    print(collect_data_a())
+    print(collect_dummy_df())
