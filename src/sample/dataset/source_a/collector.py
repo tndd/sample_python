@@ -1,4 +1,5 @@
 import random
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 
 import pandas as pd
@@ -73,6 +74,18 @@ def collect_dummy_df_product_transactions(n: int = 10000):
     )
 
 
+def get_dummy_dfs_users_transactions(n: int = 10000):
+    """
+    並列でユーザーデータと取引データを取得
+    """
+    with ThreadPoolExecutor() as executor:
+        future_users = executor.submit(collect_dummy_df_users, n)
+        future_transactions = executor.submit(collect_dummy_df_product_transactions, n)
+        df_users = future_users.result()
+        df_transactions = future_transactions.result()
+    return df_users, df_transactions
+
+
 ### TEST ###
 def test_collect_data_a():
     assert collect_data_a() == ["data:a", "data:b", "data:c"]
@@ -103,6 +116,15 @@ def test_collect_dummy_df_product_transactions():
     assert "created_at" in df.columns
     assert "buyer_id" in df.columns
     assert "seller_id" in df.columns
+
+
+def test_get_dummy_dfs_users_transactions():
+    N = 100000
+    df_users, df_transactions = get_dummy_dfs_users_transactions(n=N)
+    assert isinstance(df_users, pd.DataFrame)
+    assert isinstance(df_transactions, pd.DataFrame)
+    assert len(df_users) == N
+    assert len(df_transactions) == N
 
 
 ### MAIN ###
