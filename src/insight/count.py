@@ -1,4 +1,4 @@
-from sample.dataset.source_a.collector import collect_data_a
+from dataset.source_a.collector import collect_data_a
 
 
 def count_data():

@@ -1,4 +1,4 @@
-from sample.dataset.source_a.collector import collect_data_a, collect_dummy_df_users
+from dataset.source_a.collector import collect_data_a, collect_dummy_df_users
 
 
 def get_data_string():

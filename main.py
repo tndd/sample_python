@@ -1,4 +1,4 @@
-from sample.insight.count import count_data
+from insight.count import count_data
 
 
 def main():
