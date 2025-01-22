@@ -42,6 +42,38 @@ def collect_dummy_df(n: int = 10000):
     )
 
 
+def collect_dummy_df_product_transactions(n: int = 10000):
+    """
+    取引データのダミーデータをn件ランダムに生成する
+        1: id: uuid
+        2: price: int
+        3: quantity: int
+        4: created_at: datetime
+        5: buyer_id: uuid
+        6: seller_id: uuid
+    """
+    ids = [uuid4() for _ in range(n)]
+    prices = [random.randint(100, 10000) for _ in range(n)]
+    quantities = [random.randint(1, 1000) for _ in range(n)]
+    base_date = datetime.now()
+    created_ats = [
+        base_date - pd.Timedelta(days=random.randint(0, 365))
+        for _ in range(n)
+    ]
+    buyer_ids = [uuid4() for _ in range(n)]
+    seller_ids = [uuid4() for _ in range(n)]
+    return pd.DataFrame(
+        {
+            "id": ids,
+            "price": prices,
+            "quantity": quantities,
+            "created_at": created_ats,
+            "buyer_id": buyer_ids,
+            "seller_id": seller_ids,
+        }
+    )
+
+
 ### TEST ###
 def test_collect_data_a():
     assert collect_data_a() == ["data:a", "data:b", "data:c"]
@@ -60,6 +92,21 @@ def test_collect_dummy_df():
     assert "group" in df.columns
 
 
+def test_collect_dummy_df_product_transactions():
+    N = 1000
+    df = collect_dummy_df_product_transactions(n=N)
+    assert isinstance(df, pd.DataFrame)
+    assert len(df) == N
+    # 必要なカラムは揃ってる？
+    assert "id" in df.columns
+    assert "price" in df.columns
+    assert "quantity" in df.columns
+    assert "created_at" in df.columns
+    assert "buyer_id" in df.columns
+    assert "seller_id" in df.columns
+
+
 ### MAIN ###
 if __name__ == "__main__":
     print(collect_dummy_df())
+
