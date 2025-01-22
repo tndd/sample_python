@@ -13,7 +13,7 @@ def collect_data_a():
     ]
 
 
-def collect_dummy_df(n: int = 10000):
+def collect_dummy_df_users(n: int = 10000):
     """
     以下のユーザーデータをn件ランダムに生成する
         1: id: uuid
@@ -79,9 +79,9 @@ def test_collect_data_a():
     assert collect_data_a() == ["data:a", "data:b", "data:c"]
 
 
-def test_collect_dummy_df():
+def test_collect_dummy_df_users():
     N = 1000
-    df = collect_dummy_df(n=N)
+    df = collect_dummy_df_users(n=N)
     assert isinstance(df, pd.DataFrame)
     assert len(df) == N
     # 必要なカラムは揃ってる？
@@ -108,5 +108,5 @@ def test_collect_dummy_df_product_transactions():
 
 ### MAIN ###
 if __name__ == "__main__":
-    print(collect_dummy_df())
+    print(collect_dummy_df_product_transactions())
 

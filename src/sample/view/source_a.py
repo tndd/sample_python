@@ -1,4 +1,4 @@
-from sample.dataset.source_a.collector import collect_data_a, collect_dummy_df
+from sample.dataset.source_a.collector import collect_data_a, collect_dummy_df_users
 
 
 def get_data_string():
@@ -7,7 +7,7 @@ def get_data_string():
 
 
 def get_names(n: int = 1000):
-    df = collect_dummy_df(n=n)
+    df = collect_dummy_df_users(n=n)
     return df["name"].tolist()
 
 
