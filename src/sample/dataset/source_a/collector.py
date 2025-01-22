@@ -1,6 +1,5 @@
 import random
 from datetime import datetime
-from uuid import uuid4
 
 import pandas as pd
 
@@ -16,15 +15,15 @@ def collect_data_a():
 def collect_dummy_df_users(n: int = 10000):
     """
     以下のユーザーデータをn件ランダムに生成する
-        1: id: uuid
+        1: id: int
         2: name: str
         3: age: int
         4: created_at: datetime
         5. group: str (A, B, C)
     """
-    ids = [uuid4() for _ in range(n)]
+    ids = [i for i in range(n)]
     names = [f"name_{i}" for i in range(n)]
-    ages = [random.randint(5, 80) for _ in range(n)]
+    ages = [random.randint(18, 80) for _ in range(n)]
     base_date = datetime.now()
     created_ats = [
         base_date - pd.Timedelta(days=random.randint(0, 365))
@@ -45,14 +44,14 @@ def collect_dummy_df_users(n: int = 10000):
 def collect_dummy_df_product_transactions(n: int = 10000):
     """
     取引データのダミーデータをn件ランダムに生成する
-        1: id: uuid
+        1: transaction_id: int
         2: price: int
         3: quantity: int
         4: created_at: datetime
-        5: buyer_id: uuid
-        6: seller_id: uuid
+        5: buyer_id: int
+        6: seller_id: int
     """
-    ids = [uuid4() for _ in range(n)]
+    ids = [i for i in range(n)]
     prices = [random.randint(100, 10000) for _ in range(n)]
     quantities = [random.randint(1, 1000) for _ in range(n)]
     base_date = datetime.now()
@@ -60,8 +59,8 @@ def collect_dummy_df_product_transactions(n: int = 10000):
         base_date - pd.Timedelta(days=random.randint(0, 365))
         for _ in range(n)
     ]
-    buyer_ids = [uuid4() for _ in range(n)]
-    seller_ids = [uuid4() for _ in range(n)]
+    buyer_ids = [random.randint(0, n-1) for _ in range(n)]
+    seller_ids = [random.randint(0, n-1) for _ in range(n)]
     return pd.DataFrame(
         {
             "id": ids,
