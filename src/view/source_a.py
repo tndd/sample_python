@@ -7,7 +7,7 @@ def get_data_string():
 
 
 def get_names(n: int = 1000):
-    df = collect_dummy_df_users(n=n)
+    df = collect_dummy_df_users(n)
     return df["name"].tolist()
 
 
@@ -19,7 +19,7 @@ def test_get_data_string():
 def test_get_names():
     N = 100
     assert len(get_names(N)) == N
-    # 全部name_から始まる文字列か？
+    # 全部name_から始まる文字列か?
     assert all(name.startswith("name_") for name in get_names(N))
 
 
