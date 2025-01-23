@@ -22,7 +22,7 @@ def collect_dummy_df_users(n: int = 10000):
         4: created_at: datetime
         5. group: str (A, B, C)
     """
-    ids = [i for i in range(n)]
+    ids = list(range(n))
     names = [f"name_{i}" for i in range(n)]
     ages = [random.randint(18, 80) for _ in range(n)]
     base_date = datetime.now()
@@ -52,7 +52,7 @@ def collect_dummy_df_product_transactions(n: int = 10000):
         5: buyer_id: int
         6: seller_id: int
     """
-    ids = [i for i in range(n)]
+    ids = list(range(n))
     prices = [random.randint(100, 10000) for _ in range(n)]
     quantities = [random.randint(1, 1000) for _ in range(n)]
     base_date = datetime.now()
