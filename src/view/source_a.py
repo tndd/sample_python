@@ -26,4 +26,3 @@ def test_get_names():
 ### MAIN ###
 if __name__ == "__main__":
     print(get_names(10))
-
