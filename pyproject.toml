@@ -37,6 +37,7 @@ select = [
     "PL",
     "PD",
     "RUF",
+    "C",
 ]
 ignore = [
     "PD901",

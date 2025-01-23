@@ -27,8 +27,7 @@ def collect_dummy_df_users(n: int = 10000):
     ages = [random.randint(18, 80) for _ in range(n)]
     base_date = datetime.now()
     created_ats = [
-        base_date - pd.Timedelta(days=random.randint(0, 365))
-        for _ in range(n)
+        base_date - pd.Timedelta(days=random.randint(0, 365)) for _ in range(n)
     ]
     groups = [random.choice(["A", "B", "C"]) for _ in range(n)]
     return pd.DataFrame(
@@ -57,11 +56,10 @@ def collect_dummy_df_product_transactions(n: int = 10000):
     quantities = [random.randint(1, 1000) for _ in range(n)]
     base_date = datetime.now()
     created_ats = [
-        base_date - pd.Timedelta(days=random.randint(0, 365))
-        for _ in range(n)
+        base_date - pd.Timedelta(days=random.randint(0, 365)) for _ in range(n)
     ]
-    buyer_ids = [random.randint(0, n-1) for _ in range(n)]
-    seller_ids = [random.randint(0, n-1) for _ in range(n)]
+    buyer_ids = [random.randint(0, n - 1) for _ in range(n)]
+    seller_ids = [random.randint(0, n - 1) for _ in range(n)]
     return pd.DataFrame(
         {
             "id": ids,
@@ -130,4 +128,3 @@ def test_get_dummy_dfs_users_transactions():
 ### MAIN ###
 if __name__ == "__main__":
     print(collect_dummy_df_product_transactions())
-
